@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
-import { moviesContext } from "../App";
+import React, { useContext } from "react";
+import  moviesContext  from "../contexts/user";
 
 const Movies = () => {
-  const { movies, setMovies } = useContext(moviesContext);
+  const { movies } = useContext(moviesContext);
   const data = [];
   movies.forEach((element) => {
     data.push(element.data());
   });
-   return (
+  return (
     <div>
       {data.map((item) => {
         return (
@@ -36,9 +36,7 @@ const Movies = () => {
               </div>
               <h5 className="card-title">{item.title}</h5>
               <h6 className="card-subtitle mb-2 text-muted">{item.info}</h6>
-              <p className="card-text">
-                {item.description}
-              </p>
+              <p className="card-text">{item.description}</p>
             </div>
           </div>
         );

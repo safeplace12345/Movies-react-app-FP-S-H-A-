@@ -1,5 +1,5 @@
-import React, { useState, useContext, useRef } from "react";
-import { moviesContext } from "../App";
+import React, { useContext } from "react";
+import  moviesContext  from "../contexts/movies";
 import { Link } from "react-router-dom";
 import { Container, Row, Card, Accordion, Col } from "react-bootstrap";
 

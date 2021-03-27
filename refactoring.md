@@ -1,0 +1,14 @@
+-> rename addToDatabase to smth more specific
+-> services should not be aware of dom logic (e.g. e.target.value and e.preventDefault). it should only receive an object with data to be stored. Also you can use async await to return the added object.
+-x same applies to localStorage. userInfo does not inform the reader that it will store some value. Also should not be aware of target.value.
+- same with authentication functions. Also can refactor googleAuth etc to remove duplicate code
+-> clean up App.js file (unused imports, lint and prettify)
+-> Create new context folder to export the user and movie context
+-> never import your App component in a child component…
+-> clean up Footer component (lint, prettify remove unused imports)
+-> clean up Navbar component (lint, prettify remove unused imports)
+-> clean up dashboard component (lint, prettify remove unecessary comments)
+-> clean up movies component (lint, prettify remove unecessary comments)
+- clean up home component (lint, prettify remove unecessary comments)
+- clean up signup component (lint, prettify remove unecessary comments)
+	- you can definately refactor the useEffects here and reuse duplicate code.

@@ -1,5 +1,10 @@
-import React, {useRef , useState, useEffect } from "react";
-import { googleAuth , newEmailUser , yahooAuth} from "../services/authentication";
+import React, { useRef, useEffect } from "react";
+import {
+  googleAuth,
+  newEmailUser,
+  yahooAuth,
+} from "../services/authentication";
+import { getData } from "../services/getData";
 import {
   Button,
   Row,
@@ -10,35 +15,41 @@ import {
   FormControl,
 } from "react-bootstrap";
 const SignUp = () => {
-  const [option, setOption] = useState({ choice: false });
-const email = useRef(null)
-const yahoo = useRef(null)
-const google = useRef(null)
-
-useEffect(()=>{
-  if(email && email.current){
-    email.current.addEventListener('click',newEmailUser)
+  const email = useRef(null);
+  const yahoo = useRef(null);
+  const google = useRef(null);
+  const checkRef = (element, callBack) => {
+    if (element && element.current) {
+      return element.current.addEventListener("click", (e) => {
+            e.preventDefault()
+            getData.form(e,callBack)
+      });
+    } else {
+      return element.current.removeEventListener("click", (e) => {
+        e.preventDefault();
+        getData.form(e, callBack);
+      });
+    }
+  };
+  useEffect(() => {
+    checkRef(email, newEmailUser);
     return () => {
-      email.current.removeEventListener('click',newEmailUser)     
-    }
-  }
-})
+      checkRef(email, newEmailUser);
+    };
+  });
   useEffect(() => {
-    if (google && google.current) {
-      google.current.addEventListener("click", googleAuth);
-      return () => {
-        google.current.removeEventListener("click", googleAuth);
-      };
-    }
-  }, []);
+    checkRef(google, googleAuth);
+    return () => {
+      checkRef(google, googleAuth);
+    };
+  });
   useEffect(() => {
-    if (yahoo && yahoo.current) {
-      google.current.addEventListener("click", yahooAuth);
-      return () => {
-        google.current.removeEventListener("click", yahooAuth);
-      };
-    }
-  }, []);
+    checkRef(yahoo, yahooAuth);
+    return () => {
+      checkRef(yahoo, yahooAuth);
+    };
+  });
+
   return (
     <Container
       style={{
@@ -54,7 +65,7 @@ useEffect(()=>{
       className="col-md-7 rounded"
     >
       <h2 class="text-center p-3">Registration Info</h2>
-      <form method="POST" >
+      <form method="POST">
         <Row className="my-3">
           <Col xs={3} className="ml-3">
             <FormLabel for="name">Name : </FormLabel>
@@ -118,7 +129,12 @@ useEffect(()=>{
           <Button variant="outline-light" className="my-3" ref={email}>
             Email
           </Button>
-          <Button variant="outline-light" type="submit" className="my-3" ref={yahoo}>
+          <Button
+            variant="outline-light"
+            type="submit"
+            className="my-3"
+            ref={yahoo}
+          >
             Yahoo
           </Button>
         </div>

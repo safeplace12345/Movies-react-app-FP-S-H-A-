@@ -1,5 +1,5 @@
 import React, {useContext,useRef, } from "react";
-import {moviesContext} from '../App'
+import moviesContext from '../contexts/movies'
 import Carousel from "react-bootstrap/Carousel";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom" 
