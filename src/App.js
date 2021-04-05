@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Home from "./components/home";
 import Movies from "./components/movies";
@@ -34,10 +34,11 @@ function App() {
             <userContext.Provider value={{ user }}>
               <NavBar></NavBar>
               <hr />
-              <Switch>
+             
                 <Route exact path="/">
                   <Home />
                 </Route>
+                  <Switch>
                 <Route path="/components/movies">
                   <Movies />
                 </Route>

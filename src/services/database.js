@@ -11,6 +11,5 @@ const saveMovie = async ({title,imageURL,youtube,info,description}) => {
       youtube,
       info,
     })
-    .then((doc) => console.log(doc.id));
 };
 export { fetchMovies, saveMovie };

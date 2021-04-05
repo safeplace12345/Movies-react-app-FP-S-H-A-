@@ -2,61 +2,33 @@ import firebase from "./firebase";
 const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 const yahooProvider = new firebase.auth.OAuthProvider("yahoo.com");
-const createNewUser = (email, pwd) => {
-  auth.createUserWithEmailAndPassword(email, pwd).then((cred) => {
-    return cred;
-  });
-};
-const authState = (callback) => {
-  return auth.onAuthStateChanged((user) => {
-    if (user) {
-      return callback({ logged: true, user });
-    }
-    return callback({ logged: false, user });
-  });
-};
+const createNewUser = (email, pwd) =>
+  auth.createUserWithEmailAndPassword(email, pwd);
+const authState = (callback) =>
+  auth.onAuthStateChanged((user) => callback({ logged: !!user, user }));
 
-const authOut = () => {
-  return auth.signOut().then(console.log("User left ...."));
-};
+const authOut = () => auth.signOut().then(console.log("User left ...."));
 
-const authLogin = async ({ email, pwd }) => {
-  return await auth
+const authLogin = async ({ email, pwd }) =>
+  await auth
     .signInWithEmailAndPassword(email, pwd)
     .then((cred) => console.log(cred));
-};
-const googleAuth = async (e) => {
-  e.preventDefault();
-  return await auth
-    .signInWithPopup(googleProvider)
-    .then((res) => {
-      return {
-        user: res.user,
-        token: res.token,
-        cred: res.credential,
-      };
-  })
-    .catch((err) => console.log("Err", err));
-};
-const yahooAuth = async (e) => {
-  return await auth
-    .signInWithPopup(yahooProvider)
-    .then((res) => {
-      return {
-        user: res.user,
-        token: res.token,
-        cred: res.credential,
-      }
-    })
-    .catch((err) => console.log("Err", err));
-};
 
-const newEmailUser = ({email,name,pwd}) => {
-    if (localStorage) {
-    localStorage.setItem("user", JSON.stringify({ email, name }));
-  }
-  return createNewUser(email, pwd);
-};
+const authSignIn = (provider) =>
+  auth
+    .signInWithPopup(provider)
+    .then((res) => ({
+      user: res.user,
+      token: res.token,
+      cred: res.credential,
+    }))
+    .catch((err) => console.log("Err", err));
+
+const googleAuth = async () => authSignIn(googleProvider);
+
+const yahooAuth = async (e) => authSignIn(yahooProvider);
+
+const newEmailUser = ({ email, name, pwd }) => createNewUser(email, pwd);
 
 export default newEmailUser;
 

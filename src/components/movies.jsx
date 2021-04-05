@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import  moviesContext  from "../contexts/user";
+import  moviesContext  from "../contexts/movies";
 
 const Movies = () => {
   const { movies } = useContext(moviesContext);
   const data = [];
+  console.log(movies)
   movies.forEach((element) => {
     data.push(element.data());
   });
