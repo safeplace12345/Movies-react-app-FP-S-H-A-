@@ -3,8 +3,7 @@ import  moviesContext  from "../contexts/movies";
 
 const Movies = () => {
   const { movies } = useContext(moviesContext);
-  const data = [];
-  console.log(movies)
+  const data = []
   movies.forEach((element) => {
     data.push(element.data());
   });

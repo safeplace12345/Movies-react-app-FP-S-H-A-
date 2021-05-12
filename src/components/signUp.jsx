@@ -24,11 +24,11 @@ const SignUp = () => {
             e.preventDefault()
             getData.form(e,callBack)
       });
-    } else {
-      return element.current.removeEventListener("click", (e) => {
-        e.preventDefault();
-        getData.form(e, callBack);
-      });
+    // } else {
+    //   return element.current.removeEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     getData.form(e, callBack);
+    //   });
     }
   };
   useEffect(() => {
@@ -64,15 +64,15 @@ const SignUp = () => {
       }}
       className="col-md-7 rounded"
     >
-      <h2 class="text-center p-3">Registration Info</h2>
+      <h2 className="text-center p-3">Registration Info</h2>
       <form method="POST">
         <Row className="my-3">
           <Col xs={3} className="ml-3">
-            <FormLabel for="name">Name : </FormLabel>
+            <FormLabel htmlFor="name">Name : </FormLabel>
           </Col>
           <Col>
             <FormControl
-              class="input--style-2"
+              className="input--style-2"
               type="text"
               placeholder="Name"
               name="name"
@@ -81,11 +81,11 @@ const SignUp = () => {
         </Row>
         <Row className="my-3">
           <Col xs={3} className="ml-3">
-            <FormLabel for="email">Email : </FormLabel>
+            <FormLabel htmlFor="email">Email : </FormLabel>
           </Col>
           <Col>
             <FormControl
-              class="input--style-2 js-datepicker"
+              className="input--style-2 js-datepicker"
               type="text"
               placeholder="Email...."
               name="email"
@@ -95,27 +95,27 @@ const SignUp = () => {
         </Row>
         <Row className="my-3">
           <Col xs={3} className="ml-3">
-            <FormLabel for="gender">Gender : </FormLabel>
+            <FormLabel htmlFor="gender">Gender : </FormLabel>
           </Col>
           <Col>
-            <FormControl name="gender" as="Select">
-              <option disabled="disabled" selected="selected">
+            <FormControl name="gender" as="select">
+              <option disabled="disabled" defaultValue="selected">
                 Gender
               </option>
               <option>Male</option>
               <option>Female</option>
               <option>Other</option>
             </FormControl>
-            <div class="select-dropdown"></div>
+            <div className="select-dropdown"></div>
           </Col>
         </Row>
         <Row className="my-3">
           <Col xs={3} className="ml-3">
-            <FormLabel for="pwd">PassWord : </FormLabel>
+            <FormLabel htmlFor="pwd">PassWord : </FormLabel>
           </Col>
           <Col>
             <FormControl
-              class="input--style-2"
+              className="input--style-2"
               type="password"
               placeholder="Registration Code"
               name="pwd"

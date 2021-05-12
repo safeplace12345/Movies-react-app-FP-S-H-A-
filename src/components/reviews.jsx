@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import  moviesContext  from "../contexts/movies";
-import { Link } from "react-router-dom";
 import { Container, Row, Card, Accordion, Col } from "react-bootstrap";
 
 const Reviews = () => {
+  const cursor = {
+    cursor : 'pointer'
+  }
   const data = [];
   const { movies } = useContext(moviesContext);
   movies.forEach((element) => {
@@ -17,7 +19,7 @@ const Reviews = () => {
             <Col>
               <Accordion defaultActiveKey="0">
                 <Card bg="dark" style={{ color: "white" }}>
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
+                  <Accordion.Toggle as={Card.Header} eventKey="0" style={cursor}>
                     {item.title}
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
@@ -36,18 +38,11 @@ const Reviews = () => {
                   </Accordion.Collapse>
                 </Card>
                 <Card>
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    eventKey="1"
-                    href={item.wikipedia}
+                  <button
+                    className="btn btn-secondary"
                   >
-                    Watch Now .....
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="1">
-                    <Card.Body>
-                      For more info...<Link to="./movies">Follow Up</Link>
-                    </Card.Body>
-                  </Accordion.Collapse>
+                    <a href={item.youtube}>Watch Now .....</a>
+                  </button>
                 </Card>
               </Accordion>
             </Col>

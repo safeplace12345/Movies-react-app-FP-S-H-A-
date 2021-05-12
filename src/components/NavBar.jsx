@@ -41,7 +41,7 @@ const NavBar = () => {
               <Link to="/components/signUp">Sign Up</Link>
             </li>
             <li className="nav-item list-unstyled mr-2">
-              <Link className="logged-out" onClick={handleShow}>
+              <Link to='#' className="logged-out" onClick={handleShow}>
                 Log in
               </Link>
             </li>

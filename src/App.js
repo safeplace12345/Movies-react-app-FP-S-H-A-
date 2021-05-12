@@ -35,10 +35,10 @@ function App() {
               <NavBar></NavBar>
               <hr />
              
+                  <Switch>
                 <Route exact path="/">
                   <Home />
                 </Route>
-                  <Switch>
                 <Route path="/components/movies">
                   <Movies />
                 </Route>
