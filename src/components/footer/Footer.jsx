@@ -1,11 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import './footer.css'
+import "./footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-
       <div className="footer-left col-md-4 col-sm-6">
         <p className="about">
           <span> About the company</span> Go-Movies , Inc. operates as a
@@ -17,11 +16,10 @@ const Footer = () => {
         </p>
         <div className="icons">
           <a href="#">
-          <FontAwesomeIcon icon={faFacebook} />
+            <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a href="#">
-          <FontAwesomeIcon icon={faFacebook} />
-            
+            <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a href="#">
             <i className="fa fa-linkedin"></i>
@@ -48,7 +46,7 @@ const Footer = () => {
         <div>
           <i className="fa fa-envelope"></i>
           <p>
-            <a href="#"> Go-movies@company.com</a>
+            <a href="/components/signUp"> Go-movies@company.com</a>
           </p>
         </div>
       </div>
@@ -57,14 +55,18 @@ const Footer = () => {
           {" "}
           Go-movies<span> logo</span>
         </h2>
-        <p className="menu">
-          <a href="#"> Home</a> |<a href="#"> About</a> |
-          <a href="#"> Services</a> |<a href="#"> Portfolio</a> |
-          <a href="#"> News</a> |<a href="#"> Contact</a>
-        </p>
+        <div className="footer-nav d-flex flex-wrap justify-content-between">
+          <a href="/"> Home</a>
+          <a href="/components/construction"> About</a>
+          <a href="/components/construction"> Services</a>
+          <a href="/components/construction"> PortFolio</a>
+          <a href="/components/construction">News</a>
+          <a href="/components/construction">Contact</a>
+        </div>
         <p className="name"> Company Name &copy; 2016</p>
       </div>
     </footer>
+    
   );
 };
 

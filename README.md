@@ -1,3 +1,5 @@
 # Getting Started with Movies React App
 
-## Projet desription
+## Project description
+
+### Demo URL

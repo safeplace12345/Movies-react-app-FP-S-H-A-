@@ -1,0 +1,13 @@
+.fullView{
+    height: "100%";
+     width: "100%"
+}
+.item{
+    max-height: "70vh"
+}
+.capStyles{
+ color: "black";
+    font-size : "1em";
+    font-weight: "bold"
+
+}
