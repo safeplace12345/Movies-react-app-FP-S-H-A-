@@ -4,7 +4,8 @@ import {
   newEmailUser,
   yahooAuth,
 } from "../services/authentication";
-import { getData } from "../services/getData";
+import checkRef from "./signup/checkRef";
+import "./signup/main.css";
 import {
   Button,
   Row,
@@ -18,19 +19,7 @@ const SignUp = () => {
   const email = useRef(null);
   const yahoo = useRef(null);
   const google = useRef(null);
-  const checkRef = (element, callBack) => {
-    if (element && element.current) {
-      return element.current.addEventListener("click", (e) => {
-            e.preventDefault()
-            getData.form(e,callBack)
-      });
-    // } else {
-    //   return element.current.removeEventListener("click", (e) => {
-    //     e.preventDefault();
-    //     getData.form(e, callBack);
-    //   });
-    }
-  };
+ 
   useEffect(() => {
     checkRef(email, newEmailUser);
     return () => {
@@ -51,23 +40,11 @@ const SignUp = () => {
   });
 
   return (
-    <Container
-      style={{
-        backgroundImage:
-          "url(" +
-          "https://images.unsplash.com/photo-1509564324749-471bd272e1ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" +
-          ")",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        color: "white",
-      }}
-      className="col-md-7 rounded"
-    >
-      <h2 className="text-center p-3">Registration Info</h2>
+    <Container className="col-md-7 rounded main">
+      <h2 className="text-center p-3 text-primary">Registration Info</h2>
       <form method="POST">
         <Row className="my-3">
-          <Col xs={3} className="ml-3">
+          <Col xs={12} md={3} className="ml-3 font-weight-bold text-primary">
             <FormLabel htmlFor="name">Name : </FormLabel>
           </Col>
           <Col>
@@ -80,7 +57,7 @@ const SignUp = () => {
           </Col>
         </Row>
         <Row className="my-3">
-          <Col xs={3} className="ml-3">
+          <Col xs={12} md={3} className="ml-3 font-weight-bold text-primary">
             <FormLabel htmlFor="email">Email : </FormLabel>
           </Col>
           <Col>
@@ -90,11 +67,13 @@ const SignUp = () => {
               placeholder="Email...."
               name="email"
             />
-            <FormText>Trust Us we will never share your credentials !</FormText>
+            <FormText className="text-light">
+              Trust Us we will never share your credentials !
+            </FormText>
           </Col>
         </Row>
         <Row className="my-3">
-          <Col xs={3} className="ml-3">
+          <Col xs={12} md={3} className="ml-3 font-weight-bold text-primary">
             <FormLabel htmlFor="gender">Gender : </FormLabel>
           </Col>
           <Col>
@@ -110,7 +89,7 @@ const SignUp = () => {
           </Col>
         </Row>
         <Row className="my-3">
-          <Col xs={3} className="ml-3">
+          <Col xs={12} md={3} className="ml-3 font-weight-bold text-primary">
             <FormLabel htmlFor="pwd">PassWord : </FormLabel>
           </Col>
           <Col>

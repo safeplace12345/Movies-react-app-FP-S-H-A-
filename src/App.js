@@ -7,7 +7,7 @@ import {store} from './services/store/store'
 import NavBar from "./components/NavBar";
 import Footer from "./components/footer/Footer";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import Home from "./components/home/home";
+import Home from "./components/home";
 import Movies from "./components/movies";
 import Reviews from "./components/reviews";
 import SignUp from "./components/signUp";
@@ -18,8 +18,17 @@ import { authState } from "./services/authentication";
 import userContext from './contexts/user' 
 import moviesContext from './contexts/movies' 
 import "./App.css";
-store.dispatch({type : 'Add'})
-store.getState()
+// add a view movie page for add the reviews id logged in
+// View details add reviews on the bottom
+// {
+//   uid : 1,
+//   mid : 1,
+//   id : 001,
+//   review : '',
+// rating
+// } 
+// store.dispatch({type : 'Add'})
+// store.getState()
 function App() {
   const [user, setUser] = useState({ islogged: false });
   
@@ -44,7 +53,7 @@ function App() {
 
               <Switch>
                 <Route exact path="/">
-                  <Home />
+                  <Home />=
                 </Route>
                 <Route path="/components/movies">
                   <Movies />

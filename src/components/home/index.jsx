@@ -2,7 +2,7 @@ import React, { useContext, useRef, createRef } from "react";
 import moviesContext from "../../contexts/movies";
 import { Button, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./index.css";
+import "./main.css";
 const Home = () => {
   const capStyles = {
     color: "black",
