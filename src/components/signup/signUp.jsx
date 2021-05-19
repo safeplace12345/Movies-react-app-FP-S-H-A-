@@ -3,9 +3,9 @@ import {
   googleAuth,
   newEmailUser,
   yahooAuth,
-} from "../services/authentication";
-import checkRef from "./signup/checkRef";
-import "./signup/main.css";
+} from "../../services/authentication";
+import checkRef from "./checkRef";
+import "./main.css";
 import {
   Button,
   Row,
@@ -19,7 +19,7 @@ const SignUp = () => {
   const email = useRef(null);
   const yahoo = useRef(null);
   const google = useRef(null);
- 
+
   useEffect(() => {
     checkRef(email, newEmailUser);
     return () => {
@@ -98,6 +98,7 @@ const SignUp = () => {
               type="password"
               placeholder="Registration Code"
               name="pwd"
+              autoComplete="true"
             />
           </Col>
         </Row>

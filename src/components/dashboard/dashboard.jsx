@@ -1,14 +1,17 @@
 import React from "react";
-import { saveMovie } from "../services/database";
-import { getData } from "../services/getData";
-const DashBoard = () => {
+import { getData } from "../../services/getData";
+import { connect } from "react-redux";
+import { saveNewMovie } from "../../services/store/store";
+const DashBoard = (props) => {
   return (
     <div className="container mt-5 ">
       <h4 className="text-center"> Log in to add movies</h4>
-      <form onSubmit={(e) => {
-        e.preventDefault()
-        getData.movie(e,saveMovie)}
-      }>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          getData.movie(e, props.dispatchSave);
+        }}
+      >
         <div className="form-group">
           <label>Movie Title :</label>
           <input
@@ -77,4 +80,17 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchSave: (movie) => {
+      console.log("Dispath here");
+      dispatch(saveNewMovie(movie));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);

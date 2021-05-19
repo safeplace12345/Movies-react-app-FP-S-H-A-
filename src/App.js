@@ -1,41 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {Provider} from 'react-redux'
+import { Provider } from "react-redux";
 
-
-import {store} from './services/store/store'
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/Footer";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import "../node_modules/bootstrap/dist/js/bootstrap";
 import Home from "./components/home";
-import Movies from "./components/movies";
-import Reviews from "./components/reviews";
-import SignUp from "./components/signUp";
-import Dashboard from "./components/dashboard";
-import Construction from "./components/construction";
-import { fetchMovies } from "./services/database";
+import Movies from "./components/movies/movies";
+import Reviews from "./components/reviews/reviews";
+import SignUp from "./components/signUp/signUp";
+import Dashboard from "./components/dashboard/dashboard";
+import Construction from "./components/construction/construction";
 import { authState } from "./services/authentication";
-import userContext from './contexts/user' 
-import moviesContext from './contexts/movies' 
+import userContext from "./contexts/user";
+import { thunkFetch, store } from "./services/store/store";
 import "./App.css";
-// add a view movie page for add the reviews id logged in
-// View details add reviews on the bottom
-// {
-//   uid : 1,
-//   mid : 1,
-//   id : 001,
-//   review : '',
-// rating
-// } 
-// store.dispatch({type : 'Add'})
-// store.getState()
+import Movie from "./components/movie/movie";
+
+store.dispatch(thunkFetch());
 function App() {
   const [user, setUser] = useState({ islogged: false });
-  
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    fetchMovies().then((doc) => setMovies(doc));
-  }, []);
   useEffect(() => {
     const unsubscribe = authState(setUser);
     return () => {
@@ -43,7 +28,7 @@ function App() {
     };
   }, []);
   return (
-    <moviesContext.Provider value={{ movies, setMovies }}>
+    <Provider store={store}>
       <div className="App">
         <Router>
           <div>
@@ -70,13 +55,18 @@ function App() {
                 <Route path="/components/construction">
                   <Construction />
                 </Route>
+                <Route
+                  path="/components/movie/:index"
+                  component={Movie}
+                ></Route>
               </Switch>
               <Footer />
             </userContext.Provider>
           </div>
         </Router>
       </div>
-    </moviesContext.Provider>
+    </Provider>
+    // </moviesContext.Provider>
   );
 }
 

@@ -1,6 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebook,
+  faLinkedin,
+  faGooglePlus,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 import "./footer.css";
 const Footer = () => {
   return (
@@ -15,20 +20,17 @@ const Footer = () => {
           DVD.
         </p>
         <div className="icons">
-          <a href="#">
+          <a href="www.facebook.com">
             <FontAwesomeIcon icon={faFacebook} />
           </a>
-          <a href="#">
-            <FontAwesomeIcon icon={faFacebook} />
+          <a href="www.linkedin.com">
+            <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a href="#">
-            <i className="fa fa-linkedin"></i>
+          <a href="http://www.instagram.com">
+            <FontAwesomeIcon icon={faInstagram} />
           </a>
-          <a href="#">
-            <i className="fa fa-google-plus"></i>
-          </a>
-          <a href="#">
-            <i className="fa fa-instagram"></i>
+          <a href="http://www.google.com">
+            <FontAwesomeIcon icon={faGooglePlus} />
           </a>
         </div>
       </div>
@@ -66,7 +68,6 @@ const Footer = () => {
         <p className="name"> Company Name &copy; 2016</p>
       </div>
     </footer>
-    
   );
 };
 

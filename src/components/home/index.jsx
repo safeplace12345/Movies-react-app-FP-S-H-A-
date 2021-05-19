@@ -1,26 +1,21 @@
-import React, { useContext, useRef, createRef } from "react";
-import moviesContext from "../../contexts/movies";
+import React, { useRef, createRef, useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Button, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./main.css";
-const Home = () => {
-  const capStyles = {
-    color: "black",
-    fontSize : "1em",
-    fontWeight: "bold"
-
-
-  }
-  const { movies } = useContext(moviesContext);
+import utils from "../../services/utils";
+const Home = (props) => {
   const data = [];
-  movies.forEach((element) => {
-    data.push(element.data());
-  });
-   let refs = useRef(data.map(()=>createRef()));
+  const [movies, setMovies] = useState([]);
+ 
+  useEffect(() => {
+    utils.mountPropsToState(props,setMovies)
+  }, []);
+  let refs = useRef(movies.map(() => createRef()));
   return (
     <>
       <Carousel>
-        {data.map((item, index) => {
+        {movies.map((item, index) => {
           return (
             <Carousel.Item
               ref={refs.current[index]}
@@ -31,8 +26,9 @@ const Home = () => {
                 className="capStyles"
                 style={{ height: "100%", width: "100%" }}
                 src={item.image}
+                alt="item-gallery"
               />
-              <Carousel.Caption style={capStyles}>
+              <Carousel.Caption className="capStyles">
                 <h3>{item.title}</h3>
                 <p>{item.info}</p>
               </Carousel.Caption>
@@ -48,8 +44,13 @@ const Home = () => {
           <Link to="/components/movies">All Movies..</Link>
         </Button>
       </div>
+     
     </>
   );
 };
-
-export default Home;
+const matchStateToProps = (state) => {
+  return {
+    movies: state.data,
+  };
+};
+export default connect(matchStateToProps)(Home);

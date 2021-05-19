@@ -2,7 +2,7 @@ import firebase from "./firebase";
 const DB = firebase.firestore();
 
 const fetchMovies = async () => DB.collection("Movies-react-app").get();
-const saveMovie = async ({title,imageURL,youtube,info,description}) => {
+const saveMovieToDB = async ({title,imageURL,youtube,info,description}) => {
  return await DB.collection("Movies-react-app")
     .add({
       title,
@@ -12,4 +12,4 @@ const saveMovie = async ({title,imageURL,youtube,info,description}) => {
       info,
     })
 };
-export { fetchMovies, saveMovie };
+export { fetchMovies, saveMovieToDB };
