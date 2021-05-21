@@ -4,19 +4,16 @@ import Media from "react-media";
 import { Container, Row, Card, Accordion, Col } from "react-bootstrap";
 
 import "./main.css";
+import utils from "../../services/utils";
 
 const Reviews = (props) => {
   const [movies, setMovies] = useState([]);
-  const mountPropsToState = (cb) => {
-    const data = [];
-    props.movies.forEach((element) => {
-      data.push(element.data());
-    });
-    return cb(data);
-  };
   useEffect(() => {
-    mountPropsToState(setMovies);
-  }, []);
+    if (movies.length === 0) {
+      return utils.mountPropsToState(props, setMovies);
+    }
+    return () => console.log("Un mounting");
+  }, [props,movies.length]);
   return (
     <Container>
       {movies.map((item) => {
@@ -35,8 +32,8 @@ const Reviews = (props) => {
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       <Row md>
-                        <Col md xs={4}>
-                          <img src={item.image} alt="Loading gallery"></img>
+                        <Col md >
+                          <img src={item.image} alt="Loading gallery" className='w-100'></img>
                         </Col>
                         <Media queries={{ small: { maxWidth: 599 } }}>
                           {(matches) =>

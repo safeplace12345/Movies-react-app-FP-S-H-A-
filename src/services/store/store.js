@@ -7,9 +7,7 @@ import { fetchMovies, saveMovieToDB } from "../database";
 const middleWare = [thunk, logger];
 const initialMovies = {
   loading: false,
-  data: [
-    
-  ],
+  data: [],
   error: "",
 };
 let initFetch = () => ({ type: "initFetch" });

@@ -1,11 +1,16 @@
-import React from "react";
-import { getData } from "../../services/getData";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
+
+import { getData } from "../../services/getData";
 import { saveNewMovie } from "../../services/store/store";
+import userContext from "../../contexts/user";
 const DashBoard = (props) => {
+  const { user } = useContext(userContext);
   return (
-    <div className="container mt-5 ">
-      <h4 className="text-center"> Log in to add movies</h4>
+    <div className="container mt-5 text-warning ">
+      <h4 className="text-center font-weight-italic">
+        Welcome To Your DashBoard {user.user.email}
+      </h4>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -22,7 +27,10 @@ const DashBoard = (props) => {
             placeholder="Enter title"
             required
           />
-          <small id="emailHelp" className="form-text text-danger">
+          <small
+            id="emailHelp"
+            className="form-text text-danger font-weight-bold"
+          >
             Note : Must titles should have no special characters..
           </small>
         </div>
@@ -52,8 +60,11 @@ const DashBoard = (props) => {
             type="text"
             className="form-control"
             id="youtube"
-            placeholder="embed/<...url...>"
+            placeholder="youtube-url i.e embed/<...url...>"
           />
+          <small className="text-mute">
+            Please use right embedded url slug .
+          </small>
         </div>
         <div className="form-group">
           <label>More Info</label>

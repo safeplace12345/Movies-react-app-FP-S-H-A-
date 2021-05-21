@@ -5,15 +5,17 @@ import utils from "../../services/utils";
 import "./main.css";
 const Movies = (props) => {
   const [movies, setMovies] = useState([]);
-
   useEffect(() => {
-    utils.mountPropsToState(props,setMovies);
-  }, []);
+    if (movies.length === 0) {
+      return utils.mountPropsToState(props, setMovies);
+    }
+    return () => console.log("Un mounting");
+  }, [props,movies.length]);
   return (
-    <div>
+    <div className="row">
       {movies.map((item) => {
         return (
-          <div className="card" key={item.title}>
+          <div className="card col-md-5 mx-auto my-2" key={item.title}>
             <div className="card-body">
               <div className="video">
                 <iframe

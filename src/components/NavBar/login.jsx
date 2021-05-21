@@ -13,6 +13,7 @@ const Login = (props) => {
           onSubmit={(e) => {
             e.preventDefault();
             getData.form(e, authLogin);
+            return hide()
           }}
         >
           <Form.Group controlId="formBasicEmail">

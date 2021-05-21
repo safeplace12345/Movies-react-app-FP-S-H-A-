@@ -2,15 +2,17 @@ import React, { useRef, createRef, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Button, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
 import "./main.css";
 import utils from "../../services/utils";
 const Home = (props) => {
-  const data = [];
   const [movies, setMovies] = useState([]);
- 
   useEffect(() => {
-    utils.mountPropsToState(props,setMovies)
-  }, []);
+    if (movies.length === 0) {
+      return utils.mountPropsToState(props, setMovies);
+    }
+    return () => console.log("Un mounting");
+  }, [props,movies.length]);
   let refs = useRef(movies.map(() => createRef()));
   return (
     <>
@@ -37,14 +39,13 @@ const Home = (props) => {
         })}
       </Carousel>
       <div className="col-md-5 d-flex mt-4 mx-auto justify-content-between">
-        <Button variant="outline-warning">
+        <Button variant="btn btn-warning ">
           <Link to="/components/signUp">Subscribe now....</Link>
         </Button>
-        <Button variant="outline-dark">
+        <Button variant="btn btn-light px-5">
           <Link to="/components/movies">All Movies..</Link>
         </Button>
       </div>
-     
     </>
   );
 };
