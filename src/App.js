@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/Footer";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../node_modules/bootstrap/dist/js/bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap";
 import Home from "./components/home";
 import Movies from "./components/movies/movies";
 import Reviews from "./components/reviews/reviews";

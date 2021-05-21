@@ -5,9 +5,9 @@ import utils from "../../services/utils";
 const Movie = (props) => {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState(undefined);
-  const { index } = props.match.params;
-
+  
   useEffect(() => {
+    const { index } = props.match.params;
     if (!movie) {
       utils.mountPropsToState(props, setMovies);
       const found = movies.find(
@@ -15,7 +15,7 @@ const Movie = (props) => {
       );
       setMovie(found);
     }
-  }, [movies]);
+  }, [props, movie, movies]);
   return (
     <>
       {movie && (
