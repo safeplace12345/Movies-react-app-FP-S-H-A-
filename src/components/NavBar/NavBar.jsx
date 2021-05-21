@@ -12,12 +12,12 @@ const NavBar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <Navbar bg="light" expand="lg" sticky="top">
+    <Navbar bg="light" expand="lg" sticky="top" animation="false">
       <Navbar.Brand className="d-flex flex-column">
         <Link to="/">G0-Movies</Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Collapse id="basic-navbar-nav" animation="false">
         <li className="nav-item list-unstyled mr-2">
           <Link to="/">Home</Link>
         </li>
@@ -70,8 +70,7 @@ const NavBar = () => {
           </>
         )}
         <li className="nav-item list-unstyled mr-2">
-
-        <Search></Search>
+          <Search></Search>
         </li>
       </Navbar.Collapse>
     </Navbar>
