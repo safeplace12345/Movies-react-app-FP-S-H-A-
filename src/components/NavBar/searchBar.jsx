@@ -18,7 +18,7 @@ const Search = (props) => {
         controlId="movies"
         className="border border-dark p-2 my-2 rounded shadow shadow-3 w-100 flex-grow-2"
       >
-        <Form.Label className='px-5'>Search by name : </Form.Label>
+        <Form.Label className="px-5">Search by name : </Form.Label>
         <Form.Control
           as="select"
           className="selectpicker"
