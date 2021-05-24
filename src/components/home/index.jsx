@@ -20,11 +20,11 @@ const Home = (props) => {
       <Suspense fallback={<h1 className="text-danger">Loading Movies</h1>}>
         <ImageSlider movies={resource} refs={refs} />
       </Suspense>
-      <div className="col-md-5 d-flex mt-4 mx-auto justify-content-between">
+      <div className="col d-flex mt-4 mx-auto justify-content-between">
         <Button variant="btn btn-warning ">
           <Link to="/components/signUp">Subscribe now....</Link>
         </Button>
-        <Button variant="btn btn-light px-5">
+        <Button variant="btn btn-light px-2">
           <Link to="/components/movies">All Movies..</Link>
         </Button>
       </div>

@@ -5,17 +5,17 @@ import utils from "../../services/utils";
 const Movie = (props) => {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState(undefined);
+  const { index } = props.match.params;
   
   useEffect(() => {
-    const { index } = props.match.params;
-    if (!movie) {
+    if (movie === undefined) {
       utils.mountPropsToState(props, setMovies);
       const found = movies.find(
         (movie) => movie.title.replace(/\W/gi, "") === index.replace(/\W/gi, "")
       );
-      setMovie(found);
+     return setMovie(found);
     }
-  }, [props, movie, movies]);
+  }, [movie,index,movies]);
   return (
     <>
       {movie && (
