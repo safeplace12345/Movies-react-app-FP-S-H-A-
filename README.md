@@ -20,6 +20,9 @@ If you have questions or need help, please ask in [GitHub Discussions](https://g
 
 ```sh
 cd movies-react-app
+npm i
+serve -s build 
+or 
 npm run start
 
 ```
