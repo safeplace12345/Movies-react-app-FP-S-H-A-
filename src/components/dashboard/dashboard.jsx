@@ -4,12 +4,15 @@ import { connect } from "react-redux";
 import { getData } from "../../services/getData";
 import { saveNewMovie } from "../../services/store/store";
 import userContext from "../../contexts/user";
+import Button from "../utils/buttons";
 const DashBoard = (props) => {
   const { user } = useContext(userContext);
+  console.log(user.user)
   return (
+    
     <div className="container mt-5 text-warning ">
       <h4 className="text-center font-weight-italic">
-        Welcome To Your DashBoard {user.user.email}
+        Welcome To Your DashBoard
       </h4>
       <form
         onSubmit={(e) => {
@@ -83,9 +86,7 @@ const DashBoard = (props) => {
           />
           <label className="form-check-label">Check me out</label>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <Button> submit </Button>
       </form>
     </div>
   );
@@ -99,7 +100,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchSave: (movie) => {
-      console.log("Dispath here");
       dispatch(saveNewMovie(movie));
     },
   };

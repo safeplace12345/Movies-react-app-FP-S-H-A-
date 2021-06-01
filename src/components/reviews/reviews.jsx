@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import Media from "react-media";
 import { Container, Row, Card, Accordion, Col } from "react-bootstrap";
 
-import "./main.css";
 import utils from "../../services/utils";
+import "./main.scss";
 
 const Reviews = (props) => {
   const [movies, setMovies] = useState([]);

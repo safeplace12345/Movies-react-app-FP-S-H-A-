@@ -15,7 +15,7 @@ import Construction from "./components/construction/construction";
 import { authState } from "./services/authentication";
 import userContext from "./contexts/user";
 import { thunkFetch, store } from "./services/store/store";
-import "./App.css";
+import "./App.scss";
 import Movie from "./components/movie/movie";
 
 store.dispatch(thunkFetch());
@@ -38,7 +38,7 @@ function App() {
 
               <Switch>
                 <Route exact path="/">
-                  <Home />=
+                  <Home />
                 </Route>
                 <Route path="/components/movies">
                   <Movies />

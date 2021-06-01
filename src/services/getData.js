@@ -1,14 +1,8 @@
 
 const form = (e, callback) => {
-  const pwd = e.target["pwd"].value;
-  const email = e.target["email"].value;
-  const name = e.target["name"].value;
-  let data = {
-    email,
-    pwd,
-    name
-  };
-  return callback(data);
+  const pwd = e.target["Password"].value;
+  const email = e.target["Email"].value;
+  return callback({email,pwd});
 };
 const movie = (e ,callback) => {
      const title = e.target["title"].value;

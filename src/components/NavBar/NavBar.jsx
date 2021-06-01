@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
-import { Navbar, NavDropdown, Badge } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { authOut } from "../../services/authentication";
 import userContext from "../../contexts/user";
-import Login from "./login";
-import Search from "./searchBar";
+import Login from "./nav-utils/login";
+import Search from "./nav-utils/searchBar";
+import LoggedOut from "../utils/loggedOut";
+import LoggedIn from "../utils/loggedIn";
+import NavLink from "../utils/NavLink";
 const NavBar = () => {
   const { user } = useContext(userContext);
   const [show, setShow] = useState(false);
@@ -18,60 +21,19 @@ const NavBar = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" animation="false">
-        <li className="nav-item list-unstyled mr-2">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="nav-item list-unstyled mr-2">
-          <Link to="/components/movies" className="nav-item">
-            Movies
-          </Link>
-        </li>
-        <li className="nav-item list-unstyled mr-2">
-          <Link to="/components/reviews">Reviews</Link>
-        </li>
-        {!user.logged && (
-          <>
-            <li className="nav-item list-unstyled mr-2">
-              <Link to="/components/signUp">Sign Up</Link>
-            </li>
-            <li className="nav-item list-unstyled mr-2">
-              <Link to="#" className="logged-out" onClick={handleShow}>
-                Log in
-              </Link>
-            </li>
-          </>
-        )}
+        <NavLink to="/" action="">
+          Home
+        </NavLink>
+        <NavLink to="/components/movies" action="">
+          Movies
+        </NavLink>
+        <NavLink to="/components/reviews" action="">
+          Reviews
+        </NavLink>
+        {!user.logged && <LoggedOut show={handleShow}></LoggedOut>}
         <Login show={show} hide={handleClose} />
-        {user.logged && (
-          <>
-            <li className="nav-item list-unstyled mr-2">
-              <Link to="" onClick={authOut}>
-                Log out
-              </Link>
-            </li>
-            <li className="nav-item list-unstyled mr-2">
-              <Link to="/components/dashboard">DashBoard</Link>
-            </li>
-            <li className="nav-item list-unstyled mr-2">
-              {/* Account.jsx */}
-              <NavDropdown title="Account" id="basic-nav-dropdown">
-                <NavDropdown.Item className="bg-info" href="#action/3.1">
-                  <Badge>
-                    <h6>{user.user.email}</h6>
-                  </Badge>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">settings</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Invite Friends
-                </NavDropdown.Item>
-              </NavDropdown>
-            </li>
-          </>
-        )}
-        <li className="nav-item list-unstyled mr-2">
-          <Search></Search>
-        </li>
+        {user.logged && <LoggedIn logout={authOut} user={user}></LoggedIn>}
+        <Search />
       </Navbar.Collapse>
     </Navbar>
   );

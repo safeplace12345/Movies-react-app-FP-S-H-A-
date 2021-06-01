@@ -1,0 +1,9 @@
+.pointer{
+    cursor: pointer;
+}
+img{
+    &:hover{
+        transition: all 300s ease;
+        transform: scale(1.4);
+    }
+}
