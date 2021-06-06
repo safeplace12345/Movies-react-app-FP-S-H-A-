@@ -8,9 +8,6 @@ const LoggedIn = ({logout,user}) => {
         <NavLink to='' action={logout}>
           Log Out
         </NavLink>
-        <NavLink to='' action={logout}>
-          Log Out
-        </NavLink>
         <li className="nav-item list-unstyled mr-2">
           <Link to="/components/dashboard">DashBoard</Link>
         </li>

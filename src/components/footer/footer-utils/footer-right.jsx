@@ -1,5 +1,5 @@
 import React from "react";
-const FooterRight = ({}) => {
+const FooterRight = () => {
   return (
     <div className="footer-right col-md-4 col-sm-6">
       <h2>

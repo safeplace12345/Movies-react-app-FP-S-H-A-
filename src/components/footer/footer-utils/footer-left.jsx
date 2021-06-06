@@ -7,7 +7,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-const FooterLeft = ({}) => {
+const FooterLeft = () => {
   return (
     <div className="footer-left col-md-4 col-sm-6">
       <p className="about">

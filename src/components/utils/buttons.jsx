@@ -1,10 +1,13 @@
 import React from "react";
-const Button = ({ children}) => {
+import { Button } from 'react-bootstrap'
+const SubmitBtn = ({ children}) => {
   return (
-    <Button variant="primary" type="submit">
+    <div className="col-5 mx-auto">
+    <Button variant="primary" type="submit" className="px-5">
       {children}
     </Button>
+    </div>
   );
 };
  
-export default Button;
+export default SubmitBtn;

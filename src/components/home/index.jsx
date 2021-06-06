@@ -1,7 +1,6 @@
 import React, { useRef, createRef, useState, useEffect, Suspense } from "react";
 import { connect } from "react-redux";
-import { Button, Carousel } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {Carousel } from "react-bootstrap";
 
 import "./main.scss";
 import utils from "../../services/utils";

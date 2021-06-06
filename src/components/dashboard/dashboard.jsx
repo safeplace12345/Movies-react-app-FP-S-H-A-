@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getData } from "../../services/getData";
 import { saveNewMovie } from "../../services/store/store";
 import userContext from "../../contexts/user";
-import Button from "../utils/buttons";
+import SubmitBtn from "../utils/buttons";
 const DashBoard = (props) => {
   const { user } = useContext(userContext);
   console.log(user.user)
@@ -86,7 +86,7 @@ const DashBoard = (props) => {
           />
           <label className="form-check-label">Check me out</label>
         </div>
-        <Button> submit </Button>
+        <SubmitBtn> submit </SubmitBtn>
       </form>
     </div>
   );

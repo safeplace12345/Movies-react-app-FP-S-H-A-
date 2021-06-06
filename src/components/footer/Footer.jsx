@@ -9,7 +9,6 @@ const Footer = () => {
     <footer className="footer">
      <FooterLeft/>
      <FooterCenter/>
-
      <FooterRight/> 
       
     </footer>

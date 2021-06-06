@@ -15,7 +15,7 @@ const Movie = (props) => {
       );
      return setMovie(found);
     }
-  }, [movie,index,movies]);
+  }, [movie,index,movies,props]);
   return (
     <>
       {movie && (

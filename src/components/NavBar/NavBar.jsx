@@ -21,13 +21,13 @@ const NavBar = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" animation="false">
-        <NavLink to="/" action="">
+        <NavLink to="/" action={() => {}}>
           Home
         </NavLink>
-        <NavLink to="/components/movies" action="">
+        <NavLink to="/components/movies" action={() => {}}>
           Movies
         </NavLink>
-        <NavLink to="/components/reviews" action="">
+        <NavLink to="/components/reviews" action={() => {}}>
           Reviews
         </NavLink>
         {!user.logged && <LoggedOut show={handleShow}></LoggedOut>}

@@ -1,5 +1,5 @@
 import React from "react";
-const FooterCenter = ({}) => {
+const FooterCenter = () => {
   return (
     <div className="footer-center col-md-4 col-sm-6">
       <div>
